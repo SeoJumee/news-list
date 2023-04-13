@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
-import axios, { all } from 'axios';
+import axios from 'axios';
 import { NewsType } from './NewsItem';
 import { useParams } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ function NewsList() {
         const query =
           (category ?? 'all') === 'all' ? '' : `&category=${category}`;
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f`
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f`,
         );
         setArticles(response.data.articles);
       } catch (e) {
